@@ -4,6 +4,7 @@ import shop from "../../api/home";
 // shape: [{ id, quantity }]
 const state = {
   items: [],
+  box: 123555,
   checkoutStatus: null
 };
 
@@ -45,6 +46,9 @@ const actions = {
     );
   },
 
+  test() {
+    console.log(111);
+  },
   addProductToCart({ state, commit }, product) {
     commit("setCheckoutStatus", null);
     if (product.inventory > 0) {

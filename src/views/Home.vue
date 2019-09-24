@@ -1,18 +1,43 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <transition name="van-slide-left">
+    <div class="home">
+      <van-button type="primary" @click="showValue">默认按钮</van-button>
+      <div>{{ home.box }}</div>
+      <input type="text" :value="ipt" />
+    </div>
+  </transition>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { mapState, mapActions } from "vuex";
 export default {
   name: "home",
-  components: {
-    HelloWorld
+  mixins: [],
+  components: {},
+  props: {},
+  data() {
+    return {
+      ipt: 123
+    };
+  },
+  computed: {
+    ...mapState(["home"])
+  },
+  watch: {},
+  created() {},
+  mounted() {
+    this.test();
+  },
+  destroyed() {},
+  methods: {
+    ...mapActions(["test"]),
+    showValue() {
+      console.log(this.ipt);
+    },
+    login() {
+      this.$store.login.login();
+    }
   }
 };
 </script>
